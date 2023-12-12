@@ -250,7 +250,7 @@ try:
 	# Define a function to map the status to colors
 	def status_to_color(status):
 		if status == 'Green':
-			return 'background-color: #01802e; color: white;'
+			return 'background-color: #00802f; color: #00802f;'
 		elif status == 'Yellow':
 			return 'background-color: #fef04a; color: black;'
 		elif status == 'Orange':
