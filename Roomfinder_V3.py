@@ -281,8 +281,8 @@ try:
 	column_widths = {
 		'Status': 50,
 		'Room': 200,
-		'Note': 200,
-		'seat_nr': 200
+		'Note': 300,
+		'Seats': 100
 	}
 
 
@@ -294,7 +294,7 @@ try:
 #### Display DF
 	# Display the green rooms with 'Status', 'Room', and 'Note' columns
 	st.write("<h3>Green Rooms (Available)</h3>", unsafe_allow_html=True)
-	st.table(green_rooms.rename(columns={'shortName': 'Room'})[['Status', 'Room', 'Note','seat_nr']].style.applymap(status_to_color, subset=['Status']).set_table_styles([{'selector': f'.col{i}', 'props': [('width', f'{column_widths.get(col, 150)}px')] } for i, col in enumerate(['Status', 'Room', 'Note','seat_nr'])]))
+	st.table(green_rooms.rename(columns={'shortName': 'Room','seat_nr': 'Seats'})[['Status', 'Room', 'Note','Seats']].style.applymap(status_to_color, subset=['Status']).set_table_styles([{'selector': f'.col{i}', 'props': [('width', f'{column_widths.get(col, 150)}px')] } for i, col in enumerate(['Status', 'Room', 'Note','Seats'])]))
 
 	# Display the yellow rooms with 'Status', 'Room', and 'Note' columns
 	st.write("<h3>Yellow Rooms (Occupied but become available)</h3>", unsafe_allow_html=True)
