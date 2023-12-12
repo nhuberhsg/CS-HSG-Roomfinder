@@ -252,11 +252,11 @@ try:
 		if status == 'Green':
 			return 'background-color: #00802f; color: #00802f;'
 		elif status == 'Yellow':
-			return 'background-color: #fef04a; color: black;'
+			return 'background-color: #fef04a; color: #fef04a;'
 		elif status == 'Orange':
-			return 'background-color: #ff7f50; color: black;'
+			return 'background-color: #ff7f50; color: #ff7f50;'
 		elif status == 'Red':
-			return 'background-color: #eb6b69; color: white;'
+			return 'background-color: #eb6b69; color: #eb6b69;'
 
 	# Add the 'Status' and 'Note' columns to each room dataframe
 	green_rooms['Status'] = 'Green'
@@ -292,19 +292,23 @@ try:
 	red_rooms = red_rooms.loc[~red_rooms.index.duplicated(keep='first')]
 
 #### Display DF
-	# Display the green rooms with 'Status', 'Room', and 'Note' columns
+	# Display the green rooms with 'Status', 'Room', 'Note', and 'Seats' columns
+	# Apply the style and table sizes defined above; Source: ChatGPT (.applymap and .set_table_styles basic framework)
 	st.write("<h3>Green Rooms (Available)</h3>", unsafe_allow_html=True)
 	st.table(green_rooms.rename(columns={'shortName': 'Room','seat_nr': 'Seats'})[['Status', 'Room', 'Note', 'Seats']].style.applymap(status_to_color, subset=['Status']).set_table_styles([{'selector': f'.col{i}', 'props': [('width', f'{column_widths.get(col, 150)}px')] } for i, col in enumerate(['Status', 'Room', 'Note','Seats'])]))
 
-	# Display the yellow rooms with 'Status', 'Room', and 'Note' columns
+	# Display the green rooms with 'Status', 'Room', 'Note', and 'Seats' columns
+	# Apply the style and table sizes defined above; Source: ChatGPT (.applymap and .set_table_styles basic framework)
 	st.write("<h3>Yellow Rooms (Occupied but become available)</h3>", unsafe_allow_html=True)
 	st.table(yellow_rooms.rename(columns={'shortName': 'Room','seat_nr': 'Seats'})[['Status', 'Room', 'Note', 'Seats']].style.applymap(status_to_color, subset=['Status']).set_table_styles([{'selector': f'.col{i}', 'props': [('width', f'{column_widths.get(col, 150)}px')] } for i, col in enumerate(['Status', 'Room', 'Note', 'Seats'])]))
 
-	# Display the orange rooms with 'Status', 'Room', and 'Note' columns
+	# Display the green rooms with 'Status', 'Room', 'Note', and 'Seats' columns
+	# Apply the style and table sizes defined above; Source: ChatGPT (.applymap and .set_table_styles basic framework)
 	st.write("<h3>Orange Rooms (Free at start but not for the whole duration)</h3>", unsafe_allow_html=True)
 	st.table(orange_rooms.rename(columns={'shortName': 'Room','seat_nr': 'Seats'})[['Status', 'Room', 'Note', 'Seats']].style.applymap(status_to_color, subset=['Status']).set_table_styles([{'selector': f'.col{i}', 'props': [('width', f'{column_widths.get(col, 150)}px')] } for i, col in enumerate(['Status', 'Room', 'Note', 'Seats'])]))
 
-	# Display the red rooms with 'Status', 'Room', and 'Note' columns
+	# Display the green rooms with 'Status', 'Room', 'Note', and 'Seats' columns
+	# Apply the style and table sizes defined above; Source: ChatGPT (.applymap and .set_table_styles basic framework)
 	st.write("<h3>Red Rooms (Occupied)</h3>", unsafe_allow_html=True)
 	st.table(red_rooms.rename(columns={'shortName': 'Room','seat_nr': 'Seats'})[['Status', 'Room', 'Note', 'Seats']].style.applymap(status_to_color, subset=['Status']).set_table_styles([{'selector': f'.col{i}', 'props': [('width', f'{column_widths.get(col, 150)}px')] } for i, col in enumerate(['Status', 'Room', 'Note', 'Seats'])]))
 
