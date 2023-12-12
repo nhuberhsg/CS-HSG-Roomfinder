@@ -281,8 +281,8 @@ try:
 	column_widths = {
 		'Status': 50,
 		'Room': 200,
-		'Note': 300,
-		'Seats': 100
+		'Note': 350,
+		'Seats': 50
 	}
 
 
@@ -294,19 +294,19 @@ try:
 #### Display DF
 	# Display the green rooms with 'Status', 'Room', and 'Note' columns
 	st.write("<h3>Green Rooms (Available)</h3>", unsafe_allow_html=True)
-	st.table(green_rooms.rename(columns={'shortName': 'Room','seat_nr': 'Seats'})[['Status', 'Room', 'Note','Seats']].style.applymap(status_to_color, subset=['Status']).set_table_styles([{'selector': f'.col{i}', 'props': [('width', f'{column_widths.get(col, 150)}px')] } for i, col in enumerate(['Status', 'Room', 'Note','Seats'])]))
+	st.table(green_rooms.rename(columns={'shortName': 'Room','seat_nr': 'Seats'})[['Status', 'Room', 'Note', 'Seats']].style.applymap(status_to_color, subset=['Status']).set_table_styles([{'selector': f'.col{i}', 'props': [('width', f'{column_widths.get(col, 150)}px')] } for i, col in enumerate(['Status', 'Room', 'Note','Seats'])]))
 
 	# Display the yellow rooms with 'Status', 'Room', and 'Note' columns
 	st.write("<h3>Yellow Rooms (Occupied but become available)</h3>", unsafe_allow_html=True)
-	st.table(yellow_rooms.rename(columns={'shortName': 'Room'})[['Status', 'Room', 'Note']].style.applymap(status_to_color, subset=['Status']).set_table_styles([{'selector': f'.col{i}', 'props': [('width', f'{column_widths.get(col, 150)}px')] } for i, col in enumerate(['Status', 'Room', 'Note'])]))
+	st.table(yellow_rooms.rename(columns={'shortName': 'Room','seat_nr': 'Seats'})[['Status', 'Room', 'Note', 'Seats']].style.applymap(status_to_color, subset=['Status']).set_table_styles([{'selector': f'.col{i}', 'props': [('width', f'{column_widths.get(col, 150)}px')] } for i, col in enumerate(['Status', 'Room', 'Note', 'Seats'])]))
 
 	# Display the orange rooms with 'Status', 'Room', and 'Note' columns
 	st.write("<h3>Orange Rooms (Free at start but not for the whole duration)</h3>", unsafe_allow_html=True)
-	st.table(orange_rooms.rename(columns={'shortName': 'Room'})[['Status', 'Room', 'Note']].style.applymap(status_to_color, subset=['Status']).set_table_styles([{'selector': f'.col{i}', 'props': [('width', f'{column_widths.get(col, 150)}px')] } for i, col in enumerate(['Status', 'Room', 'Note'])]))
+	st.table(orange_rooms.rename(columns={'shortName': 'Room','seat_nr': 'Seats'})[['Status', 'Room', 'Note', 'Seats']].style.applymap(status_to_color, subset=['Status']).set_table_styles([{'selector': f'.col{i}', 'props': [('width', f'{column_widths.get(col, 150)}px')] } for i, col in enumerate(['Status', 'Room', 'Note', 'Seats'])]))
 
 	# Display the red rooms with 'Status', 'Room', and 'Note' columns
 	st.write("<h3>Red Rooms (Occupied)</h3>", unsafe_allow_html=True)
-	st.table(red_rooms.rename(columns={'shortName': 'Room'})[['Status', 'Room', 'Note']].style.applymap(status_to_color, subset=['Status']).set_table_styles([{'selector': f'.col{i}', 'props': [('width', f'{column_widths.get(col, 150)}px')] } for i, col in enumerate(['Status', 'Room', 'Note'])]))
+	st.table(red_rooms.rename(columns={'shortName': 'Room','seat_nr': 'Seats'})[['Status', 'Room', 'Note', 'Seats']].style.applymap(status_to_color, subset=['Status']).set_table_styles([{'selector': f'.col{i}', 'props': [('width', f'{column_widths.get(col, 150)}px')] } for i, col in enumerate(['Status', 'Room', 'Note', 'Seats'])]))
 
 # Implement Error Message to draw the attention of the user to the opening hours of HSG
 except KeyError:
