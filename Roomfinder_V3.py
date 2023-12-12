@@ -171,7 +171,7 @@ def get_room_dfs(StartDate_user, EndDate_user, building, floor_nr, seat_nr=None)
 ###########################################################################
 
 #Streamlit Title
-st.title("Find your room @ HSG :pencil:")
+st.title("Find your room at HSG")
 
 
 ############################## Select time period ##############################
