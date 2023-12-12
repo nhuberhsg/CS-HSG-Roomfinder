@@ -42,7 +42,7 @@ def get_room_dfs(StartDate_user, EndDate_user, building, floor_nr, seat_nr=None)
 		all_rooms.rename(columns={'seats': 'seat_nr'}, inplace=True)
 
 		# Select only active rooms
-		all_rooms = all_rooms[all_rooms['active'] == True]
+		active_rooms = all_rooms[all_rooms['active'] == 'active']
 
 		# Select only rooms that fit the filters
 		if seat_nr is not None:
@@ -53,7 +53,7 @@ def get_room_dfs(StartDate_user, EndDate_user, building, floor_nr, seat_nr=None)
 			all_rooms = all_rooms.query(f"floor_nr == {int(floor_nr)}")
 
 		# Drop unnecessary rooms
-		rooms_to_exclude = ['Sporthalle', 'Dummy', '#OLMA', 'SQU', 'MLE']
+		rooms_to_exclude = ['Sporthalle', 'Dummy', '#OLMA', 'SQU', 'MLE','#']
 		for rooms in rooms_to_exclude:
 			all_rooms = all_rooms[~all_rooms['shortName'].str.contains(rooms)]
 
