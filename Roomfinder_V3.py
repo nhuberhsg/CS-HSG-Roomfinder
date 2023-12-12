@@ -42,7 +42,7 @@ def get_room_dfs(StartDate_user, EndDate_user, building, floor_nr, seat_nr=None)
 		all_rooms.rename(columns={'seats': 'seat_nr'}, inplace=True)
 
 		# Select only active rooms
-		active_rooms = all_rooms[all_rooms['active'] == 'active']
+		all_rooms = all_rooms[all_rooms['active'] == True]
 
 		# Select only rooms that fit the filters
 		if seat_nr is not None:
