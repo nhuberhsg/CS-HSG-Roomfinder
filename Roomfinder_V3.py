@@ -258,22 +258,25 @@ try:
 		elif status == 'Red':
 			return 'background-color: #eb6b69; color: #eb6b69;'
 
-	# Add the 'Status' and 'Note' columns to each room dataframe
+	# Add the 'Status' and 'Note' columns to green_rooms dataframe
 	green_rooms['Status'] = 'Green'
 	green_rooms['Note'] = 'This room is available.'
 
+	# Add the 'Status' and 'Note' columns to yellow_rooms dataframe
 	yellow_rooms['Status'] = 'Yellow'
 	yellow_rooms['Note'] = (
 		'This room is occupied but becomes available again at: '
 		+ yellow_rooms['endTime'].astype(str).str[-8:-3] + 'h.'
 	)
 
+	# Add the 'Status' and 'Note' columns to orange_rooms dataframe
 	orange_rooms['Status'] = 'Orange'
 	orange_rooms['Note'] = (
 		'This room is free at the beginning but will be occupied starting from: '
 		+ orange_rooms['startTime'].astype(str).str[-8:-3] + 'h.'
 	)
 
+	# Add the 'Status' and 'Note' columns to red_rooms dataframe
 	red_rooms['Status'] = 'Red'
 	red_rooms['Note'] = 'This room is occupied.'
 
